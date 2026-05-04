@@ -79,3 +79,53 @@ footer {
   margin: 10px;
   background-color: rgb(255, 255, 255);
 }
+
+
+/* --- Mobile Adaptability --- */
+
+/* For Tablets and smaller (iPad, large phones) */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 5rem;
+  }
+  
+  .set {
+    margin: 5% auto;
+  }
+}
+
+/* For Mobile Phones (iPhone, Pixel, etc.) */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem; /* Shrink title to fit screen */
+    text-shadow: 3px 0 #b8174c;
+    margin-top: 10%;
+  }
+
+  .drum {
+    width: 100px;    /* Smaller buttons */
+    height: 100px;
+    font-size: 2.5rem; /* Smaller text inside buttons */
+    line-height: 1.5;
+    border: 5px solid #704896; /* Thinner borders */
+    margin: 5px;
+  }
+
+  .set {
+    margin: 15% auto;
+    width: 90%; /* Prevent buttons from touching screen edges */
+  }
+
+  footer {
+    margin-top: 20%;
+    font-size: 0.8rem;
+  }
+}
+
+/* For very small screens (Small Androids/iPhone SE) */
+@media (max-width: 375px) {
+  .drum {
+    width: 80px;
+    height: 80px;
+  }
+}
