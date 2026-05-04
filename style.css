@@ -43,7 +43,7 @@ h1 {
 .s { background-image: url("./tom3.png"); }
 .d { background-image: url("./tom4.png"); }
 .j { background-image: url("./snare.png"); }
-.k { background-image: url("./crash.png"); background-position: top; /* This shifts the image down to show the top half */ background-position: center -20%; /*the second value controls the vertical axis*/}
+.k { background-image: url("./crash.png"); background-position: center -20%; /*the second value controls the vertical axis*/}
 .l { background-image: url("./kick.png"); }
 
 /* --- The Container (PC Row Logic) --- */
