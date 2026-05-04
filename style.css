@@ -1,7 +1,7 @@
 body {
   text-align: center;
   background-color: #341c61;
-  margin: 0; /* Prevents unwanted scrollbars */
+  margin: 0;
 }
 
 h1 {
@@ -9,52 +9,11 @@ h1 {
   color: #bb80ff;
   font-family: "Monoton", sans-serif;
   font-weight: 400;
-  font-style: normal;
   text-shadow: 5px 0 #b8174c;
   margin-top: 4%;
 }
 
-footer {
-  width: 100%;
-  padding: 20px 0;
-  margin-top: 50px;
-  color: #d374ce;
-  text-align: center;
-  font-family: "Monoton", sans-serif;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Background Images - Set common properties once */
-.drum {
-  background-size: 80%; /* Keeps icons from touching borders */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #fff;
-}
-
-.w { background-image: url("./tom1.png"); }
-.a { background-image: url("./tom2.png"); }
-.s { background-image: url("./tom3.png"); }
-.d { background-image: url("./tom4.png"); }
-.j { background-image: url("./snare.png"); }
-.k { background-image: url("./crash.png"); }
-.l { background-image: url("./kick.png"); }
-
-.set {
-  margin: 5% auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  max-width: 950px;
-}
-
-.pressed {
-  box-shadow: 0 3px 4px 0 #d82f92;
-  opacity: 0.5;
-  transform: scale(0.95); /* Visual feedback for the click */
-}
-
+/* --- The Drum Buttons --- */
 .drum {
   outline: none;
   border: 10px solid #704896;
@@ -69,19 +28,59 @@ footer {
   height: 150px;
   text-align: center;
   margin: 10px;
+  background-color: #fff;
   cursor: pointer;
+  
+  /* IMAGE FIXES START HERE */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%; /* Adjust this % to make icons bigger or smaller */
+}
+
+/* Button Backgrounds */
+.w { background-image: url("./tom1.png"); }
+.a { background-image: url("./tom2.png"); }
+.s { background-image: url("./tom3.png"); }
+.d { background-image: url("./tom4.png"); }
+.j { background-image: url("./snare.png"); }
+.k { background-image: url("./crash.png"); background-position: top; /* This shifts the image down to show the top half */ background-position: center -20%; /*the second value controls the vertical axis*/}
+.l { background-image: url("./kick.png"); }
+
+/* --- The Container (PC Row Logic) --- */
+.set {
+  display: flex;
+  flex-wrap: nowrap;     /* Forces single row on large screens */
+  justify-content: center;
+  align-items: center;
+  margin: 5% auto;
+  max-width: 100%;       /* Allows it to span the full PC screen */
+  overflow-x: hidden;    /* Prevents horizontal scroll on PC */
+}
+
+.pressed {
+  box-shadow: 0 3px 4px 0 #d82f92;
+  opacity: 0.5;
+}
+
+footer {
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 50px;
+  color: #d374ce;
+  font-family: "Monoton", sans-serif;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* --- Mobile Adaptability --- */
 
 @media (max-width: 1024px) {
   h1 { font-size: 5rem; }
+  .set { flex-wrap: wrap; } /* Allow wrapping on smaller PC/Tablets */
 }
 
 @media (max-width: 768px) {
   h1 {
     font-size: 3rem;
-    text-shadow: 3px 0 #b8174c;
     margin-top: 10%;
   }
 
@@ -90,25 +89,12 @@ footer {
     height: 100px;
     font-size: 2.5rem;
     line-height: 1.5;
-    border: 5px solid #704896;
+    border-width: 6px;
     margin: 5px;
   }
 
   .set {
-    margin: 10% auto;
-    width: 100%; /* Use full width to help centering */
-  }
-
-  footer {
-    margin-top: 20%;
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 375px) {
-  .drum {
-    width: 80px;
-    height: 80px;
-    font-size: 2rem;
+    flex-wrap: wrap; /* Wrap buttons into a grid for phones */
+    margin-top: 15%;
   }
 }
