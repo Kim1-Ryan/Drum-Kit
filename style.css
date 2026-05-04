@@ -2,18 +2,31 @@ body {
   text-align: center;
   background-color: #341c61;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 h1 {
   font-size: 7rem;
   color: #bb80ff;
   font-family: "Monoton", sans-serif;
-  font-weight: 400;
   text-shadow: 5px 0 #b8174c;
-  margin-top: 4%;
+  margin: 4% 0;
 }
 
-/* --- The Drum Buttons --- */
+/* One Row on PC, Wrapped on Mobile */
+.set {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on small screens */
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 5% auto;
+}
+
 .drum {
   outline: none;
   border: 10px solid #704896;
@@ -26,75 +39,51 @@ h1 {
   border-radius: 15px;
   width: 150px;
   height: 150px;
-  text-align: center;
-  margin: 10px;
   background-color: #fff;
   cursor: pointer;
-  
-  /* IMAGE FIXES START HERE */
   background-repeat: no-repeat;
+  background-size: 70%;
   background-position: center;
-  background-size: 70%; /* Adjust this % to make icons bigger or smaller */
 }
 
-/* Button Backgrounds */
+/* Background Images */
 .w { background-image: url("./tom1.png"); }
 .a { background-image: url("./tom2.png"); }
 .s { background-image: url("./tom3.png"); }
 .d { background-image: url("./tom4.png"); }
 .j { background-image: url("./snare.png"); }
-.k { background-image: url("./crash.png"); background-position: center -20%; /*the second value controls the vertical axis*/}
-.l { background-image: url("./kick.png"); }
-
-/* --- The Container (PC Row Logic) --- */
-.set {
-  display: flex;
-  flex-wrap: nowrap;     /* Forces single row on large screens */
-  justify-content: center;
-  align-items: center;
-  margin: 5% auto;
-  max-width: 100%;       /* Allows it to span the full PC screen */
-  overflow-x: hidden;    /* Prevents horizontal scroll on PC */
+.k { 
+  background-image: url("./crash.png"); 
+  background-position: center -20%; /* Shows top half of Crash */
 }
+.l { background-image: url("./kick.png"); }
 
 .pressed {
   box-shadow: 0 3px 4px 0 #d82f92;
   opacity: 0.5;
+  transform: scale(0.95);
 }
 
 footer {
-  width: 100%;
+  margin-top: auto; /* Pushes footer to bottom */
   padding: 20px 0;
-  margin-top: 50px;
   color: #d374ce;
   font-family: "Monoton", sans-serif;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* --- Mobile Adaptability --- */
-
+/* Mobile Adjustments */
 @media (max-width: 1024px) {
-  h1 { font-size: 5rem; }
-  .set { flex-wrap: wrap; } /* Allow wrapping on smaller PC/Tablets */
+  h1 { font-size: 4rem; }
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 3rem;
-    margin-top: 10%;
-  }
-
+  h1 { font-size: 3rem; }
   .drum {
     width: 100px;
     height: 100px;
     font-size: 2.5rem;
-    line-height: 1.5;
     border-width: 6px;
-    margin: 5px;
-  }
-
-  .set {
-    flex-wrap: wrap; /* Wrap buttons into a grid for phones */
-    margin-top: 15%;
+    line-height: 1.5;
   }
 }
